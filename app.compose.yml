@@ -13,7 +13,7 @@ services:
       - REDACT_IP_ADDRESSES=false
       - DB_TYPE=mysql
     volumes:
-      - ./servers.json:/servers.json
+      - ./speedtest/docker/servers.json:/servers.json
       - ./caddy_data:/var/www/html
     logging:
       driver: "fluentd"
