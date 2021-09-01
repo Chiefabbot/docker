@@ -1,0 +1,7 @@
+{
+    "account": "garrysama@yandex.ru",
+    "date": "2021-09-01T16:00:00",
+    "database": "mysql",
+    "proxy": "caddy",
+    "base_image": "php-fpm"
+}
