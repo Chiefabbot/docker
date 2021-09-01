@@ -2,6 +2,8 @@ version: "3"
 services:
   fluentd:
     build: ./fluentd
+    networks:
+      - app-net  
     volumes:
       - ./fluentd/conf:/fluentd/etc
     ports:
@@ -15,6 +17,8 @@ services:
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.13.1
+    networks:
+      - app-net   
     environment:
       - "discovery.type=single-node"
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
@@ -31,6 +35,8 @@ services:
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.13.1
+    networks:
+      - app-net    
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ports:
@@ -42,3 +48,10 @@ services:
       driver: "fluentd"
       options:
         fluentd-address: localhost:24224
+
+networks: 
+  app-net: 
+    external: 
+      name: app-net 
+
+
